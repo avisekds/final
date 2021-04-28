@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}" />
+	<style>
+		.btn {
+			background-color: teal;
+			border: none;
+			color: white;
+			padding: 12px 16px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		.btn:hover {
+			background-color: RoyalBlue;
+		}
+	</style>
+	</style>
+	<title>Animated login signup</title>
+</head>
+
+<body>
+	<div id="container" class="container">
+
+		<div style="position:absolute;z-index:10000;">
+			<a href="{{url_for('index')}}" style="margin-top: 0%;">
+				<button class="btn"><i class="fa fa-home"></i> Home</button>
+			</a>
+		</div>
+		<!-- FORM SECTION -->
+		<div class="row">
+			<div class="sign-in col align-items-center flex-col custom-css">
+				<div class="form-wrapper align-items-center">
+					<form id="login-form" class="form sign-in" href="{{url_for('heart')}}" method="POST">
+						<h1 class="hstyle" style="background-color: #57b894">HEART ATTACK</h1>
+						<div class="form-group">
+							<i class="fas fa-arrow-alt-circle-right"></i>
+							<input type="text" name="age" placeholder="Age" />
+						</div>
+						<div class="form-group">
+							<i class="fas fa-arrow-alt-circle-right"></i>
+							<input type="text" name="sex" placeholder="sex" />
+						</div>
+						<div class="form-group">
+							<i class="fas fa-arrow-alt-circle-right"></i>
+							<input type="text" name="cigspDay" placeholder="Cigarates Per Day" />
+						</div>
+						<div class="form-group">
+							<i class="fas fa-arrow-alt-circle-right"></i>
+							<input type="text" name="bpmeds" placeholder="Bp Meds" />
+						</div>
+						<div class="form-group">
+							<i class="fas fa-arrow-alt-circle-right"></i>
+							<input type="text" name="totChol" placeholder="Tot Chol" />
+						</div>
+						<div class="form-group">
+							<i class="fas fa-arrow-alt-circle-right"></i>
+							<input type="text" name="sysbp" placeholder="SysBP" />
+						</div>
+						<div class="form-group">
+							<i class="fas fa-arrow-alt-circle-right"></i>
+							<input type="text" name="gls" placeholder="Glucose" />
+						</div>
+						<div class="form-group">
+							<i class="fas fa-arrow-alt-circle-right"></i>
+							<input type="text" name="nn" placeholder="Normal Nucleoli" />
+						</div>
+						<div class="form-group">
+							<input type="submit" name="submit" class="btn btn-info btn-md mb-5" value="submit">
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- END SIGN IN -->
+		</div>
+		<!-- END FORM SECTION -->
+		<!-- CONTENT SECTION -->
+		<div class="row content-row">
+			<!-- SIGN IN CONTENT -->
+			<div class="col align-items-center flex-col">
+				<div class="text sign-in">
+					<h2>My Heart,Your Heart</h2>
+					<p>
+						You Can't Beat a Healthy Heart. Keep a Healthy Heart, So We Won't be Apart.
+					</p>
+					<h1> </h1>
+					<p>Result:{{state}}</p>
+					<div>
+						{% if state == "Negetive" %}
+						<p class="collection-item active light green">Congratulation!!<br>You have no Heart Problem
+
+							{% elif state == "Positive" %}
+						<p class="collection-item red">You may have heart problem!!<br>Please consult with your
+							doctor.
+							{% else %}
+							{% endif%}
+					</div>
+				</div>
+				<div class="img sign-in">
+					<img src="{{user_img}}" alt="welcome">
+				</div>
+			</div>
+			<!-- END SIGN IN CONTENT -->
+		</div>
+		<!-- END CONTENT SECTION -->
+	</div>
+
+	<script src="{{url_for('static',filename='index.js')}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}" />
+	<title>Animated login signup</title>
+	<style>
+		.btn {
+			background-color: teal;
+			border: none;
+			color: white;
+			padding: 12px 16px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		.btn:hover {
+			background-color: RoyalBlue;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container" class="container">
+		<!-- FORM SECTION -->
+			<div style="position:absolute;z-index:10000;">
+				<a href="{{url_for('index')}}" style="margin-top: 0%;">
+					<button class="btn"><i class="fa fa-home"></i> Home</button>
+				</a>
+			</div>
+			<div class="row">
+				<div class="sign-in col align-items-center flex-col custom-css">
+					<div class="form-wrapper align-items-center">
+						<form id="login-form" class="form sign-in" href="{{url_for('cancer')}}" method="POST">
+							<h1 class="hstyle" style="background-color: #57b894">CANCER</h1>
+							<div class="form-group">
+								<i class="fas fa-arrow-alt-circle-right"></i>
+								<input type="text" name="ct" placeholder="Cell Thickness" />
+							</div>
+							<div class="form-group">
+								<i class="fas fa-arrow-alt-circle-right"></i>
+								<input type="text" name="csz" placeholder="Cell Size" />
+							</div>
+							<div class="form-group">
+								<i class="fas fa-arrow-alt-circle-right"></i>
+								<input type="text" name="csp" placeholder="Cell Shape" />
+							</div>
+							<div class="form-group">
+								<i class="fas fa-arrow-alt-circle-right"></i>
+								<input type="text" name="cad" placeholder="Cell Adhesion" />
+							</div>
+							<div class="form-group">
+								<i class="fas fa-arrow-alt-circle-right"></i>
+								<input type="text" name="esz" placeholder="Epith Size" />
+							</div>
+							<div class="form-group">
+								<i class="fas fa-arrow-alt-circle-right"></i>
+								<input type="text" name="bn" placeholder="Bare Nuclei" />
+							</div>
+							<div class="form-group">
+								<i class="fas fa-arrow-alt-circle-right"></i>
+								<input type="text" name="bc" placeholder="Blood Chromatin" />
+							</div>
+							<div class="form-group">
+								<i class="fas fa-arrow-alt-circle-right"></i>
+								<input type="text" name="nn" placeholder="Normal Nucleoli" />
+							</div>
+							<div class="form-group">
+								<input type="submit" name="submit" class="btn btn-info btn-md mb-5" value="submit">
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- END SIGN IN -->
+			</div>
+			<!-- END FORM SECTION -->
+			<!-- CONTENT SECTION -->
+			<div class="row content-row">
+				<!-- SIGN IN CONTENT -->
+				<div>
+					<a href="{{url_for('index')}}" style="margin-top: 0%;z-index: 5555;">
+						<button class="btn"><i class="fa fa-home" style="z-index: 5555;"></i> Home</button>
+					</a>
+				</div>
+				<div class="col align-items-center flex-col">
+					<div class="text sign-in">
+						<h2>Cancer: Just Beat It!</h2>
+						<p>
+							Early Detection Saves Lives.
+							Fight the Fight, Find the Cure
+						</p>
+						<h1> </h1>
+						<p>Result:{{state}}</p>
+						<div>
+							{% if state == "Negetive" %}
+							<p class="collection-item active light green">Congratulation!!<br>You have no Cancer
+
+								{% elif state == "Positive" %}
+							<p class="collection-item red">You have a chance of Cancer!!<br>Please consult with your
+								doctor.
+								{% else %}
+								{% endif%}
+						</div>
+					</div>
+					<div class="img sign-in">
+						<img src="{{user_img}}" alt="welcome">
+					</div>
+				</div>
+				<!-- END SIGN IN CONTENT -->
+			</div>
+			<!-- END CONTENT SECTION -->
+		</div>
+
+		<script src="{{url_for('static',filename='index.js')}}"></script>
+</body>
+
+</html>
